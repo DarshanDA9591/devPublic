@@ -19,7 +19,7 @@ const responses = [
   },
   {
     q: 'School timings',
-    a: 'Our school operates from 🕗 9:00 AM to 3:00 PM, Monday to Friday.',
+    a: 'School operates from 🕗 9:00 AM to 3:00 PM, Monday to Friday.',
   },
   {
     q: 'Facilities available',
