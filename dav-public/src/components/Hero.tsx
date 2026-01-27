@@ -42,7 +42,7 @@ const Hero = () => {
   }, [displayed, typing, wordIndex]);
 
   return (
-    <section className="relative min-h-[60vh] flex flex-col justify-center items-center bg-gradient-to-br from-blue-900 via-maroon-800 to-yellow-400 text-white overflow-hidden pt-0 mt-0">
+    <section className="relative min-h-[80vh] flex flex-col justify-center items-center bg-gradient-to-br from-blue-900 via-maroon-800 to-yellow-400 text-white overflow-hidden pt-0 mt-0">
       {/* Background image restored */}
       <div className="absolute inset-0 w-full h-full">
         <img

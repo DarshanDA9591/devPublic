@@ -30,3 +30,6 @@ body {
 .animate-fadein {
   animation: fadein 1.5s ease-in;
 }
+[id] {
+  scroll-margin-top: 80px;
+}

@@ -23,12 +23,27 @@ const Header = () => {
       style={{ height: '12vh', left: 0, right: 0, maxWidth: '100vw', overflowX: 'clip' }}
     >
       <div className="w-full flex justify-between items-center py-4 px-4 md:container md:mx-auto md:px-6 max-w-full overflow-x-clip">
-        <div className="flex items-center">
-          <Image src="/DAV-School-Logo.png" alt="School Logo" width={68} height={68} className="rounded-full border-2 border-yellow-400 shadow-lg mr-3 bg-white object-contain" />
-          <Link href="#hero" className="text-2xl md:text-3xl font-extrabold text-white tracking-widest drop-shadow-lg transition hover:text-yellow-300">
-            D.A.V <br /> Public School
-          </Link>
-        </div>
+<div className="flex items-center">
+  <Image
+    src="/DAV-School-Logo.png"
+    alt="School Logo"
+    width={68}
+    height={68}
+    className="rounded-full border-2 border-yellow-400 shadow-lg mr-3 bg-white object-contain"
+  />
+
+  <Link href="#hero" className="flex flex-col justify-center leading-none">
+    <span className="text-xl md:text-2xl font-serif font-semibold tracking-wide text-white drop-shadow-lg hover:text-yellow-300 transition">
+      D.A.V <br/>Public School
+    </span>
+
+    <span className="text-[10px] md:text-xs text-yellow-300 tracking-widest uppercase leading-none">
+      Knowledge • Character • Excellence
+    </span>
+  </Link>
+</div>
+
+
         <nav className="hidden md:flex gap-8">
           {navOptions.map((opt, i) => (
             <motion.a
