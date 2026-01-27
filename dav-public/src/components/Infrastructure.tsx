@@ -9,7 +9,7 @@ const infraData = [
   },
   {
     img: '/infra2.jpg',
-    title: 'Karaate Dojo',
+    title: 'Karate Dojo',
     desc: 'Expansive sports arenas and facilities for holistic physical development.'
   },
   {
@@ -29,8 +29,8 @@ const infraData = [
   },
   {
     img: '/infra6.jpg',
-    title: 'Band Auditorium',
-    desc: 'A modern auditorium for performances, lectures, and events.'
+    title: 'Band Team',
+    desc: 'A modern team for performances, lectures, and events.'
   }
 ];
 

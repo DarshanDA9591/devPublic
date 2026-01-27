@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const words = [
   'growth',
@@ -9,16 +9,27 @@ const words = [
   'life',
 ];
 
+const backgroundImages = [
+  '/school-hero.jpg',
+  '/infra6.jpg',
+  '/p2.jpg',
+  '/infra3.jpg',
+  '/p6.jpg',
+];
+
 const typingSpeed = 300;
-const pauseTime = 10000;
+const pauseTime = 11000;
 
 const Hero = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayed, setDisplayed] = useState('');
   const [typing, setTyping] = useState(true);
+  const [bgIndex, setBgIndex] = useState(0);
 
+  // Typing effect
   useEffect(() => {
     let timeout: NodeJS.Timeout;
+
     if (typing) {
       if (displayed.length < words[wordIndex].length) {
         timeout = setTimeout(() => {
@@ -38,36 +49,73 @@ const Hero = () => {
         setWordIndex((prev) => (prev + 1) % words.length);
       }
     }
+
     return () => clearTimeout(timeout);
   }, [displayed, typing, wordIndex]);
 
+  // Background image slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 3000); // change every 1 second
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative min-h-[80vh] flex flex-col justify-center items-center bg-gradient-to-br from-blue-900 via-maroon-800 to-yellow-400 text-white overflow-hidden pt-0 mt-0">
-      {/* Background image restored */}
+    <section className="relative min-h-[80vh] flex flex-col justify-center items-center bg-gradient-to-br from-blue-900 via-maroon-800 to-yellow-400 text-white overflow-hidden">
+      
+      {/* Background Slideshow */}
       <div className="absolute inset-0 w-full h-full">
-        <img
-          src="/school-hero.jpg"
-          alt="School campus background"
-          className="object-cover w-full h-full opacity-40"
-          style={{ zIndex: 0 }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 to-transparent" />
+        <AnimatePresence>
+          <motion.img
+            key={bgIndex}
+            src={backgroundImages[bgIndex]}
+            alt="School campus background"
+            className="object-cover w-full h-full absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+          />
+        </AnimatePresence>
+<div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent" />
       </div>
-      <div className="z-10 text-center px-4 w-full flex flex-col items-center justify-center gap-6">
-        <div className="text-base md:text-lg font-semibold text-yellow-200 tracking-wide mb-2 mt-8 md:mt-12 animate-fadein">
-          Education is not preparation for life; <br/>Education is life itself.
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-4 w-full flex flex-col items-center justify-center gap-6">
+        
+        <div className="text-base md:text-lg font-semibold text-yellow-200 tracking-wide animate-fadein">
+          Education is not about reaching a destination <br />
+          it is about becoming a better human every day
         </div>
-        <div className="text-2xl md:text-4xl font-bold text-white mb-8 animate-fadein">
-          Education is
-          <span className="inline-block min-w-[120px] mx-2 text-yellow-400 border-b-2 border-yellow-400">
-            {displayed}
-            <span className="animate-pulse">|</span>
-          </span>
+
+<div className="text-2xl md:text-4xl font-bold text-white animate-fadein">
+  Education is <br />
+  <span className="inline-block min-w-[120px] ml-1 -translate-x-2 md:-translate-x-4 transform text-yellow-400 border-b-2 border-yellow-400">
+    <span className="text-3xl md:text-5xl font-semibold italic tracking-wide">
+      {displayed}
+    </span>
+    <span className="animate-pulse ml-1">|</span>
+  </span>
+</div>
+
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+          <a
+            href="#admissions"
+            className="bg-yellow-400 text-blue-900 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-yellow-300 transition transform hover:scale-105"
+          >
+            Admissions Open
+          </a>
+          <a
+            href="#contact"
+            className="bg-white text-blue-900 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-200 transition transform hover:scale-105"
+          >
+            Contact Us
+          </a>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#admissions" className="bg-yellow-400 text-blue-900 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-yellow-300 transition transform hover:scale-105">Admissions Open</a>
-          <a href="#contact" className="bg-white text-blue-900 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-200 transition transform hover:scale-105">Contact Us</a>
-        </div>
+
       </div>
     </section>
   );

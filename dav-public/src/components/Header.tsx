@@ -20,7 +20,7 @@ const Header = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, type: 'spring' }}
       className="fixed top-0 left-0 w-screen z-50 bg-gradient-to-r from-blue-900 via-maroon-800 to-yellow-400 shadow-xl backdrop-blur-md bg-opacity-90"
-      style={{ height: '14vh', left: 0, right: 0, maxWidth: '100vw', overflowX: 'clip' }}
+      style={{ height: '12vh', left: 0, right: 0, maxWidth: '100vw', overflowX: 'clip' }}
     >
       <div className="w-full flex justify-between items-center py-4 px-4 md:container md:mx-auto md:px-6 max-w-full overflow-x-clip">
 <div className="flex items-center">
@@ -34,7 +34,7 @@ const Header = () => {
 
   <Link href="#hero" className="flex flex-col justify-center leading-none">
     <span className="text-xl md:text-2xl font-serif font-semibold tracking-wide text-white drop-shadow-lg hover:text-yellow-300 transition">
-      D.A.V <br/>Public School
+      D.A.V <br />Public School
     </span>
 
     <span className="text-[10px] md:text-xs text-yellow-300 tracking-widest uppercase leading-none">
@@ -97,4 +97,3 @@ const Header = () => {
 };
 
 export default Header;
-

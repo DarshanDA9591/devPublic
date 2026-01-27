@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 const academics = [
-  { year: 'BEST', title: 'Library System', desc: 'A modern library with digital and print resources for all ages.', img: '/p2.jpg' },
+  { year: 'BEST', title: 'Library System', desc: 'A modern library with digital and print resources for all Classes.', img: '/p2.jpg' },
   { year: 'BEST', title: 'Computer Lab', desc: 'State-of-the-art computer lab with high-speed internet and latest technology.', img: '/p3.jpg' },
   { year: 'BEST', title: 'Science Lab', desc: 'Fully equipped science lab for hands-on experiments and discovery.', img: '/p4.jpg' },
 ];

@@ -13,7 +13,7 @@ const Footer = () => (
       {/* Desktop: All in one row, Mobile: stacked */}
       <div className="flex flex-col md:flex-row md:items-center md:gap-8 w-full justify-between">
         <div className="mb-6 md:mb-0">
-          <div className="font-bold text-xl mb-2">Grand School Name</div>
+          <div className="font-bold text-xl mb-2">D.A.V Public School</div>
           <div># 25/D, 3rd Stage, Industrial Suburb,<br/> Vishweshwaranagar, Mysuru</div>
           <div>Phone: 821 2488429</div>
           <div>Email: info@davpublicschoolmysuru.ac.in</div>
