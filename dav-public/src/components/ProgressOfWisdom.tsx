@@ -13,18 +13,19 @@ const ProgressOfWisdom = () => {
             The Progress Of Wisdom
           </h2>
 
-          <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-            ‘Pra’ stands for Progress and ‘Mati’ indicates wisdom. Pramati means
-            progress of wisdom. We envision to build a strong learning culture
-            that promotes the individuality of all students, unifying them as
-            future leaders.
-          </p>
+<p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+  We believe education is a journey of continuous growth and understanding.
+  Our aim is to build a strong learning culture that values individuality,
+  encourages curiosity, and prepares students to grow as confident and
+  responsible future leaders.
+</p>
 
-          <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-            Our curriculum is built to impart values, comprehensive education
-            and a strong sense of confidence in every child that they can
-            succeed and fulfill their aspirations.
-          </p>
+<p className="text-gray-700 text-base md:text-lg leading-relaxed">
+  Our curriculum is thoughtfully designed to impart strong values, provide
+  comprehensive education, and nurture self-confidence in every child,
+  empowering them to achieve success and pursue their aspirations.
+</p>
+
         </div>
 
         {/* Illustration */}

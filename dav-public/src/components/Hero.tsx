@@ -25,6 +25,28 @@ const Hero = () => {
   const [displayed, setDisplayed] = useState('');
   const [typing, setTyping] = useState(true);
   const [bgIndex, setBgIndex] = useState(0);
+const introText =
+  "Education is not about reaching a destination;\nit is about becoming a better human every day.";
+
+
+const [introDisplayed, setIntroDisplayed] = useState('');
+
+useEffect(() => {
+  let index = 0;
+  setIntroDisplayed('');
+
+  const interval = setInterval(() => {
+    setIntroDisplayed((prev) => prev + introText.charAt(index));
+    index++;
+
+    if (index >= introText.length) {
+      clearInterval(interval);
+    }
+  }, 100); // typing speed (adjust if needed)
+
+  return () => clearInterval(interval);
+}, []);
+
 
   // Typing effect
   useEffect(() => {
@@ -85,10 +107,12 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 w-full flex flex-col items-center justify-center gap-6">
         
-        <div className="text-base md:text-lg font-semibold text-yellow-200 tracking-wide animate-fadein">
-          Education is not about reaching a destination <br />
-          it is about becoming a better human every day
-        </div>
+<div className="text-xl md:text-4xl font-semibold text-yellow-200 tracking-wide text-center max-w-4xl whitespace-pre-line">
+  {introDisplayed}
+  <span className="animate-pulse ml-1">|</span>
+</div>
+
+
 
 <div className="text-2xl md:text-4xl font-bold text-white animate-fadein">
   Education is <br />
