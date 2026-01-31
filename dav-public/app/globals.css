@@ -33,3 +33,21 @@ body {
 [id] {
   scroll-margin-top: 80px;
 }
+
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-rtl {
+  animation: marquee-rtl 20s linear infinite;
+}
+
+
+
+
+

@@ -3,13 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const words = [
-  'growth',
-  'freedom',
-  'opportunity',
-  'creativity',
-  'life',
-];
+const words = ['growth', 'freedom', 'opportunity', 'creativity', 'life'];
 
 const backgroundImages = [
   '/school-hero.jpg',
@@ -19,21 +13,23 @@ const backgroundImages = [
   '/p6.jpg',
 ];
 
+const notifications = [
+  '📢 Admissions Open for Academic Year 2025–26',
+  '🏫 Holistic Education with Modern Infrastructure',
+  '🎓 Experienced Faculty & Student-Centric Learning',
+];
+
 const introText =
   "Education is not about reaching a destination;\nit is about becoming a better human every day.";
 
-const Hero = () => {
-  /* ---------------- INTRO TYPING (SAFE) ---------------- */
+export default function Hero() {
+  /* ---------------- INTRO TYPING ---------------- */
   const [introIndex, setIntroIndex] = useState(0);
 
   useEffect(() => {
     if (introIndex >= introText.length) return;
-
-    const timeout = setTimeout(() => {
-      setIntroIndex((prev) => prev + 1);
-    }, 100);
-
-    return () => clearTimeout(timeout);
+    const t = setTimeout(() => setIntroIndex((p) => p + 1), 100);
+    return () => clearTimeout(t);
   }, [introIndex]);
 
   const introDisplayed = introText.slice(0, introIndex);
@@ -44,44 +40,62 @@ const Hero = () => {
   const [typing, setTyping] = useState(true);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let t: NodeJS.Timeout;
 
     if (typing) {
       if (displayed.length < words[wordIndex].length) {
-        timeout = setTimeout(() => {
-          setDisplayed(words[wordIndex].slice(0, displayed.length + 1));
-        }, 300);
+        t = setTimeout(
+          () => setDisplayed(words[wordIndex].slice(0, displayed.length + 1)),
+          300
+        );
       } else {
         setTyping(false);
-        timeout = setTimeout(() => setTyping(true), 11000);
+        t = setTimeout(() => setTyping(true), 11000);
       }
     } else {
       if (displayed.length > 0) {
-        timeout = setTimeout(() => {
-          setDisplayed(words[wordIndex].slice(0, displayed.length - 1));
-        }, 150);
+        t = setTimeout(
+          () => setDisplayed(words[wordIndex].slice(0, displayed.length - 1)),
+          150
+        );
       } else {
         setTyping(true);
-        setWordIndex((prev) => (prev + 1) % words.length);
+        setWordIndex((p) => (p + 1) % words.length);
       }
     }
 
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(t);
   }, [displayed, typing, wordIndex]);
 
   /* ---------------- BACKGROUND SLIDESHOW ---------------- */
   const [bgIndex, setBgIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
+    const i = setInterval(
+      () => setBgIndex((p) => (p + 1) % backgroundImages.length),
+      3000
+    );
+    return () => clearInterval(i);
   }, []);
 
   return (
-    <section className="relative min-h-[80vh] flex flex-col justify-center items-center text-white overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center text-white overflow-hidden">
+
+      {/* 🔔 RIGHT → LEFT MOVING NOTIFICATION */}
+<div className="absolute top-0 left-0 w-full bg-transparent py-2 overflow-hidden z-20 mt-6">
+        <div className="relative w-full overflow-hidden">
+          <div className="flex gap-16 whitespace-nowrap marquee-rtl font-semibold text-white-600 text-lg md:text-xl tracking-wide"
+
+>
+            {notifications.map((text, i) => (
+              <span key={i}>{text}</span>
+            ))}
+            {notifications.map((text, i) => (
+              <span key={`dup-${i}`}>{text}</span>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Background */}
       <div className="absolute inset-0">
@@ -96,30 +110,25 @@ const Hero = () => {
             transition={{ duration: 1 }}
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 flex flex-col gap-6 items-center">
+      <div className="relative z-10 text-center px-4 flex flex-col gap-6 items-center pt-14">
 
-        {/* Intro Text */}
         <div className="text-xl md:text-4xl font-semibold text-yellow-200 max-w-4xl whitespace-pre-line">
           {introDisplayed}
           <span className="animate-pulse ml-1">|</span>
         </div>
 
-        {/* Animated Word */}
         <div className="text-2xl md:text-4xl font-bold">
           Education is <br />
           <span className="text-yellow-400 border-b-2 border-yellow-400">
-            <span className="text-3xl md:text-5xl italic">
-              {displayed}
-            </span>
+            <span className="text-3xl md:text-5xl italic">{displayed}</span>
             <span className="animate-pulse ml-1">|</span>
           </span>
         </div>
 
-        {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
           <a className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-bold">
             Admissions Open
@@ -132,6 +141,4 @@ const Hero = () => {
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
